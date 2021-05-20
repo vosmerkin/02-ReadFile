@@ -33,7 +33,7 @@ public class IOfunctions {
 //    for-each  List
     }
 
-    void writeToFile(String filename, ArrayList<String> list) throws FileNotFoundException {
+    void writeToFile(String filename, List<String> list) throws FileNotFoundException {
 //        for each:   List
 
         Iterator<String> it = list.iterator();
