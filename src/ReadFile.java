@@ -1,41 +1,50 @@
-import sorting.CollectionSortingDictionary;
-import sorting.CollectionSortingIntersect;
-import sorting.CollectionSortingMyWay;
-import sorting.CollectionSortingShuffle;
+import sorting.*;
 
 import java.io.*;
 import java.util.*;
+
+//switch
+//default sorter
+//intersect отдельно
+//
+//map - сортировка и пересечение
 
 public class ReadFile {
 
     private static void sortByMethod(List<String> list, String sortMethod, String filePath) throws FileNotFoundException {
 
-        Long time0 = System.currentTimeMillis();
-        IOfunctions io = new IOfunctions();
+        var one = "xxx";
+        String two = new String ("xxx");
+        System.out.println("compare ="+(one == two));
 
-        if (sortMethod == "Shuffle sorting") {
-            CollectionSortingShuffle sort = new CollectionSortingShuffle();
-            list = sort.sort(list);
-        }
-        if (sortMethod == "My way sorting (by length)") {
-            CollectionSortingMyWay sortMyWay = new CollectionSortingMyWay();
-            list = sortMyWay.sort(list);
-        }
-        if (sortMethod == "Dictionary sorting") {
-            CollectionSortingDictionary sortDictionary = new CollectionSortingDictionary();
-            list = sortDictionary.sort(list);
-        }
-        if (sortMethod == "Intersection") {
-            CollectionSortingIntersect sortIntersect = new CollectionSortingIntersect();
-            ArrayList<String> list1 = io.readFromFile(System.getProperty("user.dir") + "/" + "single1.txt");
-            list = sortIntersect.intersect(list, list1);
-        }
-
-
-        io.writeToFile(filePath, list);
-        System.out.println(sortMethod);
-        System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
-        io.display(list, 10);
+//        Long time0 = System.currentTimeMillis();
+//        IOfunctions io = new IOfunctions();
+//        Sort sorter= null;
+//
+//        if (sortMethod == "Shuffle sorting") {
+//            sorter = new CollectionSortingShuffle();
+//        }
+//        if (sortMethod == "My way sorting (by length)") {
+//             sort = new CollectionSortingMyWay();
+//        }
+//        if (sortMethod == "Dictionary sorting") {
+//            CollectionSortingDictionary sort = new CollectionSortingDictionary();
+//            list = sortDictionary.sort(list);
+//        }
+//
+//        list = sorter.sort(list);
+//
+//        if (sortMethod == "Intersection") {
+//            CollectionSortingIntersect sortIntersect = new CollectionSortingIntersect();
+//            ArrayList<String> list1 = io.readFromFile(System.getProperty("user.dir") + "/" + "single1.txt");
+//            list = sortIntersect.intersect(list, list1);
+//        }
+//
+//
+//        io.writeToFile(filePath, list);
+//        System.out.println(sortMethod);
+//        System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
+//        io.display(list, 10);
     }
 
     public static void main(String[] args) throws FileNotFoundException {
