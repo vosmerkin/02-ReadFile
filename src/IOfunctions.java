@@ -1,7 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class IOfunctions {
 
@@ -22,6 +20,26 @@ public class IOfunctions {
             throw new RuntimeException(e);
         }
         return list;
+    }
+
+    public Map<Integer, String> readMapFromFile(String filename) throws FileNotFoundException {
+        HashMap<Integer, String> map = new HashMap<Integer, String>();
+        int s1 = 0;
+        try {
+            String line;
+            BufferedReader in = new BufferedReader(new FileReader(new File(filename).getAbsoluteFile()));
+            try {
+                while ((line = in.readLine()) != null) {
+                    s1++;
+                    map.put(s1, line);
+                }
+            } finally {
+                in.close();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return map;
     }
 
     public void display(List<String> list, Integer count) {

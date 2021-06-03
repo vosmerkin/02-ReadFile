@@ -29,12 +29,7 @@ public class ReadFile {
                 sorter = new CollectionSortingDictionary();
                 break;
         }
-
-
         list = sorter.sort(list);
-
-
-
 
         io.writeToFile(filePath, list);
         System.out.println(sortMethod);
@@ -45,9 +40,7 @@ public class ReadFile {
     public static void main(String[] args) throws FileNotFoundException {
         IOfunctions io = new IOfunctions();
 
-
         List<String> list = new ArrayList<String>();
-
 
         String projectPath = System.getProperty("user.dir") + "/";
         list = io.readFromFile(projectPath + "single.txt");
