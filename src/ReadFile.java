@@ -48,19 +48,27 @@ public class ReadFile {
         io.display(list, 10);
 
 
-        sortByMethod(list, "Shuffle sorting", System.getProperty("user.dir") + "/" + "single_shuffle.txt");
-        sortByMethod(list, "My way sorting (by length)", System.getProperty("user.dir") + "/" + "single_myway.txt");
-        sortByMethod(list, "Dictionary sorting", System.getProperty("user.dir") + "/" + "single_dict.txt");
+        sortByMethod(list, "Shuffle sorting", projectPath + "single_shuffle.txt");
+        sortByMethod(list, "My way sorting (by length)", projectPath + "single_myway.txt");
+        sortByMethod(list, "Dictionary sorting", projectPath + "single_dict.txt");
 
 
         Long time0 = System.currentTimeMillis();
         CollectionSortingIntersect sortIntersect = new CollectionSortingIntersect();
-        ArrayList<String> list1 = io.readFromFile(System.getProperty("user.dir") + "/" + "single1.txt");
+        ArrayList<String> list1 = io.readFromFile(projectPath + "single1.txt");
         list = sortIntersect.intersect(list, list1);
         io.writeToFile(projectPath + "single_intersect.txt", list);
         System.out.println("Intersection");
         System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
         io.display(list, 10);
+
+
+        Map<Integer, String> mp = null;
+        mp = io.readMapFromFile(projectPath + "single.txt");
+        CollectionSortingMapByValue sortMap= new CollectionSortingMapByValue();
+        mp= sortMap.mapSort(mp);
+        System.out.println("Map dictionary sorting");
+        io.displayMap(mp, 10);
 
 
     }

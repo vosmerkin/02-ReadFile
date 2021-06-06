@@ -43,11 +43,29 @@ public class IOfunctions {
     }
 
     public void display(List<String> list, Integer count) {
-        Iterator<String> it = list.iterator();
-        for (int i = 0; i < 10; i++) System.out.println((i + 1) + ". " + it.next());
-
+//        Iterator<String> it = list.iterator();
+//        for (int i = 0; i < 10; i++) System.out.println((i + 1) + ". " + it.next());
+        Integer i = 0;
+        for (String lst : list) {
+            i++;
+            if (i > count) break;
+            System.out.println((i + 1) + ". " + lst);
+        }
 //    for-each  List
     }
+
+    public void displayMap(Map<Integer, String> map, Integer count) {
+//        Iterator<String> it = list.iterator();
+//        for (int i = 0; i < 10; i++) System.out.println((i + 1) + ". " + it.next());
+        Integer i = 0;
+        for (String mp : map.values()) {
+            i++;
+            if (i > count) break;
+            System.out.println(i + ". " + " " +mp);
+        }
+//    for-each  List
+    }
+
 
     void writeToFile(String filename, List<String> list) throws FileNotFoundException {
 //        for each:   List
