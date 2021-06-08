@@ -5,7 +5,7 @@ import java.util.*;
 
 public class CollectionSortingMapByValue {
     public <Integer, String extends Comparable<? super String>> Map<Integer, String> mapSort(Map<Integer, String> map) throws FileNotFoundException {
-        Map<Integer, String> sortedMap = new HashMap<>();
+        LinkedHashMap<Integer, String> sortedMap = new LinkedHashMap<>();
         List<Map.Entry<Integer, String>> values = new ArrayList<>(map.entrySet());
         values.sort(Map.Entry.comparingByValue());
 
