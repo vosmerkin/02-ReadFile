@@ -11,10 +11,42 @@ import java.util.*;
 
 public class ReadFile {
 
-    private static void sortByMethod(List<String> list, String sortMethod, String filePath) throws FileNotFoundException {
+    private static final IOfunctions IO = new IOfunctions();
+
+    public static void main(String[] args) throws IOException {
+        String projectPath = "./";
+        List<String> list = IO.readFromFile(projectPath + "single.txt");
+        System.out.println("Original list");
+        IO.display(list, 10);
+
+
+        sortByMethod(list, "Shuffle sorting", projectPath + "single_shuffle.txt");
+        sortByMethod(list, "My way sorting (by length)", projectPath + "single_myway.txt");
+        sortByMethod(list, "Dictionary sorting", projectPath + "single_dict.txt");
 
 
         Long time0 = System.currentTimeMillis();
+        CollectionSortingIntersect sortIntersect = new CollectionSortingIntersect();
+        List<String> list1 = IO.readFromFile(projectPath + "single1.txt");
+        list = sortIntersect.intersect(list, list1);
+        IO.writeToFile(projectPath + "single_intersect.txt", list);
+        System.out.println("Intersection");
+        System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
+        IO.display(list, 10);
+
+
+        time0 = System.currentTimeMillis();
+        Map<Integer, String> mp;
+        mp = IO.readMapFromFile(projectPath + "single.txt");
+        CollectionSortingMapByValue sortMap = new CollectionSortingMapByValue();
+        mp = sortMap.mapSort(mp);
+        System.out.println("Map dictionary sorting");
+        System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
+        IO.display(mp, 10);
+    }
+
+    private static void sortByMethod(List<String> list, String sortMethod, String filePath) throws FileNotFoundException {
+        long time0 = System.currentTimeMillis();
         IOfunctions io = new IOfunctions();
         Sort sorter = null;
 
@@ -35,42 +67,6 @@ public class ReadFile {
         System.out.println(sortMethod);
         System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
         io.display(list, 10);
-    }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        IOfunctions io = new IOfunctions();
-
-        List<String> list = new ArrayList<String>();
-
-        String projectPath = System.getProperty("user.dir") + "/";
-        list = io.readFromFile(projectPath + "single.txt");
-        System.out.println("Original list");
-        io.display(list, 10);
-
-
-        sortByMethod(list, "Shuffle sorting", projectPath + "single_shuffle.txt");
-        sortByMethod(list, "My way sorting (by length)", projectPath + "single_myway.txt");
-        sortByMethod(list, "Dictionary sorting", projectPath + "single_dict.txt");
-
-
-        Long time0 = System.currentTimeMillis();
-        CollectionSortingIntersect sortIntersect = new CollectionSortingIntersect();
-        ArrayList<String> list1 = io.readFromFile(projectPath + "single1.txt");
-        list = sortIntersect.intersect(list, list1);
-        io.writeToFile(projectPath + "single_intersect.txt", list);
-        System.out.println("Intersection");
-        System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
-        io.display(list, 10);
-
-
-        Map<Integer, String> mp = null;
-        mp = io.readMapFromFile(projectPath + "single.txt");
-        CollectionSortingMapByValue sortMap= new CollectionSortingMapByValue();
-        mp= sortMap.mapSort(mp);
-        System.out.println("Map dictionary sorting");
-        io.displayMap(mp, 10);
-
-
     }
 
 }

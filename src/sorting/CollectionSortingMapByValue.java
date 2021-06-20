@@ -9,7 +9,6 @@ public class CollectionSortingMapByValue {
         List<Map.Entry<Integer, String>> values = new ArrayList<>(map.entrySet());
         values.sort(Map.Entry.comparingByValue());
 
-
 //        CollectionSortingDictionary sorter = new CollectionSortingDictionary();
 
         for (Map.Entry<Integer, String> entry : values) {
