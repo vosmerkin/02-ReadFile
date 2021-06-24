@@ -8,14 +8,11 @@ public class IOfunctions {
     public List<String> readFromFile(String filename) throws IOException {
         List<String> list = new ArrayList<>();
         // Change to try with resources
-        BufferedReader in = new BufferedReader(new FileReader(new File(filename).getAbsoluteFile()));
-        try {
+        try (BufferedReader in = new BufferedReader(new FileReader(new File(filename).getAbsoluteFile()))) {
             String s;
             while ((s = in.readLine()) != null) {
                 list.add(s);
             }
-        } finally {
-            in.close();
         }
         return list;
     }
@@ -24,14 +21,11 @@ public class IOfunctions {
         Map<Integer, String> map = new HashMap<>();
         int s1 = 0;
         String line;
-        BufferedReader in = new BufferedReader(new FileReader(new File(filename).getAbsoluteFile()));
-        try {
+        try (BufferedReader in = new BufferedReader(new FileReader(new File(filename).getAbsoluteFile()))){
             while ((line = in.readLine()) != null) {
                 s1++;
                 map.put(s1, line);
             }
-        } finally {
-            in.close();
         }
         return map;
     }
@@ -65,9 +59,7 @@ public class IOfunctions {
 //        for each:   List
 
 //        Itera/tor<String> it = list.iterator();
-        try {
-            PrintWriter out = new PrintWriter(new File(filename).getAbsoluteFile());
-
+        try (PrintWriter out = new PrintWriter(new File(filename).getAbsoluteFile())){
             for (String lst : list) {
                 out.println(lst);
             }
@@ -75,9 +67,6 @@ public class IOfunctions {
 //                out.println(it.next());
 //            }
             out.close();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }

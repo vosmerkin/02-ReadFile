@@ -37,6 +37,7 @@ public class ReadFile {
 
         time0 = System.currentTimeMillis();
         Map<Integer, String> mp;
+
         mp = IO.readMapFromFile(projectPath + "single.txt");
         CollectionSortingMapByValue sortMap = new CollectionSortingMapByValue();
         mp = sortMap.mapSort(mp);
