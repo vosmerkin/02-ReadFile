@@ -40,10 +40,17 @@ public class ReadFile {
 
         mp = IO.readMapFromFile(projectPath + "single.txt");
         Map<Integer,String> mp1=new TreeMap<>();
+        Map<String,Integer> mp2=new TreeMap<>();
+        mp2 = IO.readMapFromFile1(projectPath + "single.txt");
+        System.out.println(mp2.keySet());
+
         mp1.putAll(mp);
         System.out.println("Treemap dictionary sorting");
         System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
-        IO.display(mp1, 10);
+//        IO.display(mp1, 10);
+        System.out.println(mp1.values());
+
+
 
 
         CollectionSortingMapByValue sortMap = new CollectionSortingMapByValue();
