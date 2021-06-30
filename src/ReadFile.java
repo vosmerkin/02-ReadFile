@@ -39,6 +39,13 @@ public class ReadFile {
         Map<Integer, String> mp;
 
         mp = IO.readMapFromFile(projectPath + "single.txt");
+        Map<Integer,String> mp1=new TreeMap<>();
+        mp1.putAll(mp);
+        System.out.println("Treemap dictionary sorting");
+        System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
+        IO.display(mp1, 10);
+
+
         CollectionSortingMapByValue sortMap = new CollectionSortingMapByValue();
         mp = sortMap.mapSort(mp);
         System.out.println("Map dictionary sorting");
