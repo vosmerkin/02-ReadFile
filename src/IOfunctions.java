@@ -46,7 +46,7 @@ public class IOfunctions {
         for (String lst : list) {
             i++;
             if (i > count) break;
-            System.out.println((i + 1) + ". " + lst);
+            System.out.println(i + ". " + lst);
         }
     }
 
@@ -60,11 +60,22 @@ public class IOfunctions {
     }
 
 
-    void writeToFile(String filename, List<String> list) throws FileNotFoundException {
+    void writeToFile(String filename, Collection<String> list) throws FileNotFoundException {
         try (PrintWriter out = new PrintWriter(new File(filename).getAbsoluteFile())) {
             for (String lst : list) {
                 out.println(lst);
             }
         }
     }
+
+    void writeToFile(String filename, Map <Integer,String> map) throws FileNotFoundException {
+        try (PrintWriter out = new PrintWriter(new File(filename).getAbsoluteFile())) {
+            for (Map.Entry m : map.entrySet()) {
+                out.println(m.getValue());
+            }
+        }
+    }
+
+
+
 }

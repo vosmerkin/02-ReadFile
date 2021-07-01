@@ -39,17 +39,29 @@ public class ReadFile {
         Map<Integer, String> mp;
 
         mp = IO.readMapFromFile(projectPath + "single.txt");
-        Map<Integer,String> mp1=new TreeMap<>();
-        Map<String,Integer> mp2=new TreeMap<>();
-        mp2 = IO.readMapFromFile1(projectPath + "single.txt");
-        System.out.println(mp2.keySet());
-
+        Map<Integer, String> mp1 = new TreeMap<>();
         mp1.putAll(mp);
-        System.out.println("Treemap dictionary sorting");
-        System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
-//        IO.display(mp1, 10);
+        System.out.println("mp1");
         System.out.println(mp1.values());
+        IO.display(mp1, 10);
+        IO.writeToFile(projectPath + "single_map.txt", mp1);
 
+        Map<String, Integer> mp2;
+        mp2 = new TreeMap<> (new Comparator<>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        mp2 = IO.readMapFromFile1(projectPath + "single.txt");
+        System.out.println("mp2");
+        System.out.println(mp2.keySet());
+        IO.writeToFile(projectPath + "single_map.txt", mp2.keySet());
+
+
+//        System.out.println("Treemap dictionary sorting");
+//        System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
+//        IO.display(mp1, 10);
 
 
 
