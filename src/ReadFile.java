@@ -46,14 +46,8 @@ public class ReadFile {
         IO.display(mp1, 10);
         IO.writeToFile(projectPath + "single_map.txt", mp1);
 
-        Map<String, Integer> mp2;
-        mp2 = new TreeMap<> (new Comparator<>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.compareTo(o2);
-            }
-        });
-        mp2 = IO.readMapFromFile1(projectPath + "single.txt");
+        Map<String, Integer> mp2 = new TreeMap<>();
+        mp2.putAll(IO.readMapFromFile1(projectPath + "single.txt"));
         System.out.println("mp2");
         System.out.println(mp2.keySet());
         IO.writeToFile(projectPath + "single_map.txt", mp2.keySet());
@@ -62,7 +56,6 @@ public class ReadFile {
 //        System.out.println("Treemap dictionary sorting");
 //        System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
 //        IO.display(mp1, 10);
-
 
 
         CollectionSortingMapByValue sortMap = new CollectionSortingMapByValue();
