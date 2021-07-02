@@ -29,7 +29,7 @@ public class IOfunctions {
     }
 
     public Map<String, Integer> readMapFromFile1(String filename) throws IOException {
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new TreeMap<>();
         int s1 = 0;
         String line;
         try (BufferedReader in = new BufferedReader(new FileReader(new File(filename).getAbsoluteFile()))) {
@@ -50,9 +50,9 @@ public class IOfunctions {
         }
     }
 
-    public void display(Map<Integer, String> map, Integer count) {
+    public void display(Map<String,Integer> map, Integer count) {
         Integer i = 0;
-        for (String mp : map.values()) {
+        for (String mp : map.keySet()) {
             i++;
             if (i > count) break;
             System.out.println(i + ". " + " " + mp);

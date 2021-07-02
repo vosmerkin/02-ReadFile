@@ -36,20 +36,18 @@ public class ReadFile {
 
 
         time0 = System.currentTimeMillis();
-        Map<Integer, String> mp;
+//        Map<Integer, String> mp;
+//        mp = IO.readMapFromFile(projectPath + "single.txt");
+//        Map<Integer, String> mp1 = new TreeMap<>(mp);
+//        System.out.println("mp1");
+//        System.out.println(mp1.values());
+//        IO.display(mp1, 10);
+//        IO.writeToFile(projectPath + "single_map.txt", mp1);
 
-        mp = IO.readMapFromFile(projectPath + "single.txt");
-        Map<Integer, String> mp1 = new TreeMap<>();
-        mp1.putAll(mp);
-        System.out.println("mp1");
-        System.out.println(mp1.values());
-        IO.display(mp1, 10);
-        IO.writeToFile(projectPath + "single_map.txt", mp1);
-
-        Map<String, Integer> mp2 = new TreeMap<>();
-        mp2.putAll(IO.readMapFromFile1(projectPath + "single.txt"));
-        System.out.println("mp2");
-        System.out.println(mp2.keySet());
+        Map<String, Integer> mp2 = new TreeMap<>(IO.readMapFromFile1(projectPath + "single.txt"));
+//        mp2.putAll(IO.readMapFromFile1(projectPath + "single.txt"));
+        System.out.println("Map dictionary sorting");
+//        System.out.println(mp2.keySet());
         IO.writeToFile(projectPath + "single_map.txt", mp2.keySet());
 
 
@@ -58,11 +56,9 @@ public class ReadFile {
 //        IO.display(mp1, 10);
 
 
-        CollectionSortingMapByValue sortMap = new CollectionSortingMapByValue();
-        mp = sortMap.mapSort(mp);
-        System.out.println("Map dictionary sorting");
+
         System.out.println(((System.currentTimeMillis() - time0)) + " milliseconds");
-        IO.display(mp, 10);
+        IO.display(mp2, 10);
     }
 
     private static void sortByMethod(List<String> list, String sortMethod, String filePath) throws FileNotFoundException {
